@@ -1,0 +1,274 @@
+﻿@using System.Web.UI.WebControls
+@{
+    ViewBag.Title = "Medicine_Supply";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var it = "";
+
+    //"Medicine_Supply", "HeadOffice", FormMethod.Post
+
+}
+
+
+
+<div class="center-block">
+    <div class="row">
+        <div class="col-lg-3 col-md-3"></div>
+        <div class="col-lg-6 col-md-6 text-center postTopic1">
+            <br>
+            <h2>Medicine_Supply</h2>
+
+            @using (Html.BeginForm())
+            {
+                <h4>District </h4>
+                <br>
+                <select name="districtId" id="District">
+                    <option value="0">--Plz Select--</option>
+                    @foreach (var department in ViewBag.Dis)
+                    {
+
+
+                        <option value="@department.districtID">@department.districtName</option>
+                    }
+
+                </select>
+                <br>
+                <br>
+                <h4>Thana </h4>
+                <br>
+                <select name="thanaId" id="Thana">
+                    <option value="0">--Plz Select--</option>
+                </select>
+                <br>
+                <br>
+                <h4>Center </h4>
+                <br>
+                <select name="centerId" id="Center">
+                    <option value="0">--Plz Select--</option>
+                </select>
+                <br>
+                <br>
+
+                <h4>ADD Medicine</h4>
+
+                <select name="medicine" id="medicine">
+                    <option value="0">--Plz Select--</option>
+                    @foreach (var dep1 in ViewBag.Med)
+                    {
+
+
+                        <option value="@dep1.medicineID">@dep1.medicineName</option>
+
+                    }
+                </select>
+                <br>
+                <br>
+                <h4>Quantity </h4>
+                <input type="text" value="" id="Qunantity"/>
+                <br>
+                <br>
+                <input type="button" value="Add" id="Addid" class="btn btn-default"/>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class=" col-xs-12 center-block">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3"></div>
+                        <div class="col-lg-6 col-md-6">
+                            <table id="Table1" class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <td>
+                                        _ID_
+                                    </td>
+                                    <td>
+                                        _Name_
+                                    </td>
+                                    <td>
+                                        _Quantity_
+                                    </td>
+                                </tr>
+                                </thead>
+                                <tbody id="tbody1"></tbody>
+                            </table>
+                            <br>
+                            <br>
+                            <br>
+                            <p>
+                                <input type="submit" value="Save" id="SubmitId" class="btn btn-default"/>
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-3"></div>
+                    </div>
+                </div>
+
+            }
+
+
+
+
+        </div>
+        <div class="col-lg-3 col-md-3"></div>
+    </div>
+
+</div>
+
+
+
+<script src="~/Scripts/jquery-2.1.3.min.js"></script>
+
+<script>
+
+
+
+
+
+    $("#District").change(function () {
+
+        var districtID = $("#District").val();
+        $("#Thana").empty();
+        var json = { districtID: districtID };
+        $.ajax(
+                    {
+                        type:
+                            "POST",
+                        url:
+                            '@Url.Action("GetThanaByDistrictId", "HeadOffice")',
+                        contentType:
+                            "application/json; charset=utf-8",
+                        data:
+                            JSON.stringify(json),
+                        dataType:
+                            "json",
+                        success:
+                            function (data) {
+                                $.each(data, function (key, value) {
+
+                                    $("#Thana").append('<option value=' + value.thanaID + '>' + value.thanaName + '</option>');
+
+
+                                }
+                                    );
+
+                            },
+                    }
+    );
+
+
+    }
+    );
+
+
+
+    $("#Thana").change(function () {
+
+        var thanaId = $("#Thana").val();
+        $("#Center").empty();
+        var json = { thanaId: thanaId };
+        $.ajax(
+                    {
+                        type:
+                            "POST",
+                        url:
+                            '@Url.Action("GetCenterByThanaId", "HeadOffice")',
+                        contentType:
+                            "application/json; charset=utf-8",
+                        data:
+                            JSON.stringify(json),
+                        dataType:
+                            "json",
+                        success:
+                            function (data) {
+                                $.each(data, function (key, value) {
+
+
+
+                                    $("#Center").append('<option value=' + value.centerId + '>' + value.centerName + '</option>');
+
+                                }
+                                );
+
+                            },
+                    }
+            );
+
+
+    }
+        );
+
+
+
+    $('#Addid').click(function (e) {
+        var third = $("#medicine").val();
+
+        var four = $("#Qunantity").val();
+        var dist1 = $('#medicine :selected').text();
+
+        $("#tbody1").append('<tr><td>' + third + '</td><td>' + dist1 + '</td><td>' + four + '</td></tr>');
+
+        // add your ajax post and give a json like { student : first, something : second, another : third }
+    });
+
+
+    $('#SubmitId').click(function (e) {
+        var zero = $("#District").val();
+        var first = $("#Thana").val();
+        var second = $("#Center").val();
+
+        //var third = $("#medicine").val();
+        //var four = $("#Qunantity").val();
+
+        var obj = $('#Table1 tbody tr').map(function () {
+            // $(this) is used more than once; cache it for performance.
+            var $row = $(this);
+
+            // For each row that's "mapped", return an object that
+            //  describes the first and second <td> in the row.
+            return {
+                id: $row.find(':nth-child(1)').text(),
+                text: $row.find(':nth-child(2)').text(),
+                text2: $row.find(':nth-child(3)').text()
+            };
+        }).get();
+
+        var json = { districtId: zero, thanaId: first, centerId: second, obj: obj };
+        $.ajax(
+                    {
+                        type:
+                            "POST",
+                        url:
+                            '@Url.Action("Medicine_Supply", "HeadOffice")',
+                        contentType:
+                            "application/json; charset=utf-8",
+                        data:
+                            JSON.stringify(json),
+                        dataType:
+                            "json",
+                        success:
+                            function (data) {
+                                $.each(data, function (key, value) {
+
+                                }
+                                );
+
+                            },
+                    }
+            );
+
+        // add your ajax post and give a json like { student : first, something : second, another : third }
+    });
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

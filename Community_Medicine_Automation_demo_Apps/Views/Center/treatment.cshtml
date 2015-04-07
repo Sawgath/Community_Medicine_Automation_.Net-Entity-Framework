@@ -1,0 +1,278 @@
+﻿@{
+    ViewBag.Title = "treatment";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<div class="center-block">
+    <div class="row">
+        <br/>
+        <div class="col-lg-2 col-md-2"></div>
+        <div class="col-lg-8 col-md-8 text-center postTopic1">
+            <h2><u>Treatment</u>
+            </h2>
+            @using (Html.BeginForm())
+            {
+
+                <h4>Voter ID </h4>
+                <input type="text" value="" id="VoterID"/>
+                <br>
+                <h4>Name </h4>
+                <input type="text" value="" id="VoterName"/>
+                <br>
+                <h4>Address </h4>
+                <input type="text" value="" id="Address"/>
+                <br>
+                <h4>Age </h4>
+                <input type="text" value="" id="Age"/>
+                <br>
+
+                <p>
+                     <input type="button" value="See All History" id="Bid" />
+                 </p>
+
+                <br>
+                <p>
+                    <div class="form-group">
+                        <b> Observation </b>
+                        <br/>
+                        <textarea type="text" id="Obs" name="Observation" cols="100" rows="3"></textarea>
+                    </div>
+                    <b> Doctor Name </b>
+                    <select name="DOCTORId" id="Doctor">
+                        <option value="">--Plz Select--</option>
+
+                        @foreach (var doc in ViewBag.doc1)
+                        {
+
+
+                            <option value="@doc.doctorID">@doc.doctorName</option>
+                        }
+
+                    </select>
+                    <b> Date </b>
+                    <input type="date" name="bday" id="Pday" value="">
+                </p>
+
+                <br>
+
+
+                <br>
+
+                <b> Disease </b>
+                <select name="disease" id="disease">
+                    <option value="0">--Plz Select--</option>
+                    @foreach (var dis1 in ViewBag.dis1)
+                    {
+
+
+                        <option value="@dis1.diseaseID">@dis1.diseaseName</option>
+
+                    }
+                </select>
+                <b> Medicine </b>
+                <select name="medicine" id="medicine">
+                    <option value="0">--Plz Select--</option>
+                    @foreach (var med1 in ViewBag.Med1)
+                    {
+
+
+                        <option value="@med1.medicineID">@med1.medicineName</option>
+
+                    }
+                </select>
+                <b> Before Meal/After Meal </b>
+                <select name="BA" id="BA">
+                    <option value="">--Plz Select--</option>
+                    <option value="1">Before Meal</option>
+                    <option value="2">After Meal</option>
+                </select>
+                <br/><br/><br/>
+                <b> Dose </b>
+                <select name="dose" id="Dose">
+                    <option value="">--Plz Select--</option>
+                    <option value="1"> 1 </option>
+                    <option value="2"> 2 </option>
+                    <option value="3"> 3 </option>
+                    <option value="4"> 4 </option>
+                    <option value="5"> 5 </option>
+                </select>
+
+                <b> Quantity </b>
+                <input type="text" id="Quantity" name="quantity"/>
+                <br>
+                <div class="form-group text-center">
+                    <label for="comment">Note:</label>
+                    <br/>
+
+                    <textarea type="text" id="Note" name="note" cols="100" rows="3"></textarea>
+                </div>
+                <br>
+                <br>
+                <input type="button" value="Add" id="Addid"/>
+                <br>
+                <br>
+                <table id="Table1" class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <td>
+                            _Disease ID_
+                        </td>
+                        <td>
+                            _Disease_
+                        </td>
+                        <td>
+                            _MedicineID_
+                        </td>
+                        <td>
+                            _Medicine_
+                        </td>
+                        <td>
+                            _Dose_
+                        </td>
+                        <td>
+                            _Before Meal/After Meal_
+                        </td>
+                        <td>
+                            _Quantity_
+                        </td>
+                        <td>
+                            _Note_
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody12"></tbody>
+                </table>
+
+            }
+            <p>
+                <input type="submit" value="Save" id="SubmitId"/>
+            </p>
+
+        </div>
+        <div class="col-lg-2 col-md-2"></div>
+    </div>
+
+</div>
+
+
+<script src="~/Scripts/jquery-2.1.3.min.js"></script>
+
+<script>
+
+
+
+    $('#Addid').click(function () {
+        var first = $("#disease").val();
+        var first1 = $("#disease :selected").text();
+        var second = $("#medicine ").val();
+        var second1 = $("#medicine :selected").text();
+        var third = $("#Dose :selected").text();
+        var fourth = $("#BA :selected").text();
+        var fifth = $("#Quantity").val();
+        var sixth = $('#Note').val();
+        var seven = sixth;
+        $("#tbody12").append('<tr><td>' + first + '</td><td>' + first1 + '</td><td>' + second + '</td><td>' + second1 + '</td><td>' + third + '</td><td>' + fourth + '</td><td>' + fifth + '</td><td>' + seven + '</td></tr>');
+        //////////////////////////        id                       text1                   text2               text3                   text4                   text5                 text6                 text7
+        /////                             disid                    disname                 medid                 medname                dose                   before/after            qunatity              note
+        // add your ajax post and give a json like { student : first, something : second, another : third }
+    });
+
+
+    $('#Bid').click(function () {
+        var first1 = $("#VoterID").val();
+
+        var json = { vId: first1 };
+        $.ajax(
+                    {
+                        type:
+                            "POST",
+                        url:
+                            '@Url.Action("pdf", "Center")',
+                        contentType:
+                            "application/json; charset=utf-8",
+                        data:
+                            JSON.stringify(json),
+                        dataType:
+                            "json",
+                        success:
+                            function (data) {
+
+
+                            },
+                    }
+            );
+
+
+        // add your ajax post and give a json like { student : first, something : second, another : third }
+    });
+
+    $('#SubmitId').click(function () {
+
+        var first1 = $("#VoterID").val();
+        var second1 = $("#VoterName ").val();
+        var third1 = $("#Address").val();
+        var fourth1 = $("#Age").val();
+        var fifth1 = $("#Obs").val();
+        var sixth1 = $("#Doctor ").val();
+        var sixth12 = $("#Doctor :selected").text();
+        var seven1 = $('#Pday').val();
+
+
+
+        var obj = $('#Table1 tbody tr').map(function () {
+            // $(this) is used more than once; cache it for performance.
+            var $row = $(this);
+
+            // For each row that's "mapped", return an object that
+            //  describes the first and second <td> in the row.
+            return {
+                id: $row.find(':nth-child(1)').text(),
+                text1: $row.find(':nth-child(2)').text(),
+                text2: $row.find(':nth-child(3)').text(),
+                text3: $row.find(':nth-child(4)').text(),
+                text4: $row.find(':nth-child(5)').text(),
+                text5: $row.find(':nth-child(6)').text(),
+                text6: $row.find(':nth-child(7)').text(),
+                text7: $row.find(':nth-child(8)').text()
+
+
+            };
+        }).get();
+
+        var json = { vId: first1, vname: second1, address: third1, age: fourth1, obs: fifth1, docid: sixth1, docname: sixth12, date: seven1, obj: obj };
+        $.ajax(
+                    {
+                        type:
+                            "POST",
+                        url:
+                            '@Url.Action("treatment", "Center")',
+                        contentType:
+                            "application/json; charset=utf-8",
+                        data:
+                            JSON.stringify(json),
+                        dataType:
+                            "json",
+                        success:
+                            function (data) {
+
+
+                            },
+                    }
+            );
+
+        // add your ajax post and give a json like { student : first, something : second, another : third }
+    });
+
+
+
+
+
+    //<h4>Service Given </h4>
+    //<label value="" id="Service"></label>
+
+
+
+
+
+</script>

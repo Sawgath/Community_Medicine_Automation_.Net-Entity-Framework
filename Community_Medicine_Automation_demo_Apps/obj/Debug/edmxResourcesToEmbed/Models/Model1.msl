@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="community_medicine_dbModelStoreContainer" CdmEntityContainer="community_medicine_dbEntities">
+    <EntitySetMapping Name="center_tb">
+      <EntityTypeMapping TypeName="community_medicine_dbModel.center_tb">
+        <MappingFragment StoreEntitySet="center_tb">
+          <ScalarProperty Name="centerId" ColumnName="centerId" />
+          <ScalarProperty Name="centerName" ColumnName="centerName" />
+          <ScalarProperty Name="districtID" ColumnName="districtID" />
+          <ScalarProperty Name="districtName" ColumnName="districtName" />
+          <ScalarProperty Name="thanaID" ColumnName="thanaID" />
+          <ScalarProperty Name="thanaName" ColumnName="thanaName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="disease_tb">
+      <EntityTypeMapping TypeName="community_medicine_dbModel.disease_tb">
+        <MappingFragment StoreEntitySet="disease_tb">
+          <ScalarProperty Name="diseaseID" ColumnName="diseaseID" />
+          <ScalarProperty Name="diseaseName" ColumnName="diseaseName" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="treatment" ColumnName="treatment" />
+          <ScalarProperty Name="prfered_drugs" ColumnName="prfered_drugs" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="district_tb">
+      <EntityTypeMapping TypeName="community_medicine_dbModel.district_tb">
+        <MappingFragment StoreEntitySet="district_tb">
+          <ScalarProperty Name="districtID" ColumnName="districtID" />
+          <ScalarProperty Name="districtName" ColumnName="districtName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="doctor_tb">
+      <EntityTypeMapping TypeName="community_medicine_dbModel.doctor_tb">
+        <MappingFragment StoreEntitySet="doctor_tb">
+          <ScalarProperty Name="doctorID" ColumnName="doctorID" />
+          <ScalarProperty Name="centerID" ColumnName="centerID" />
+          <ScalarProperty Name="centerName" ColumnName="centerName" />
+          <ScalarProperty Name="doctorName" ColumnName="doctorName" />
+          <ScalarProperty Name="degree" ColumnName="degree" />
+          <ScalarProperty Name="specialization" ColumnName="specialization" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="medicine_tb">
+      <EntityTypeMapping TypeName="community_medicine_dbModel.medicine_tb">
+        <MappingFragment StoreEntitySet="medicine_tb">
+          <ScalarProperty Name="medicineID" ColumnName="medicineID" />
+          <ScalarProperty Name="medicineName" ColumnName="medicineName" />
+          <ScalarProperty Name="mg_ml" ColumnName="mg_ml" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="patient_tb">
+      <EntityTypeMapping TypeName="community_medicine_dbModel.patient_tb">
+        <MappingFragment StoreEntitySet="patient_tb">
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+          <ScalarProperty Name="voterID" ColumnName="voterID" />
+          <ScalarProperty Name="patientName" ColumnName="patientName" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="patientService" ColumnName="patientService" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stock_tb">
+      <EntityTypeMapping TypeName="community_medicine_dbModel.stock_tb">
+        <MappingFragment StoreEntitySet="stock_tb">
+          <ScalarProperty Name="stockID" ColumnName="stockID" />
+          <ScalarProperty Name="centerID" ColumnName="centerID" />
+          <ScalarProperty Name="centerName" ColumnName="centerName" />
+          <ScalarProperty Name="medicineID" ColumnName="medicineID" />
+          <ScalarProperty Name="medicineName2" ColumnName="medicineName2" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="thana_tb">
+      <EntityTypeMapping TypeName="community_medicine_dbModel.thana_tb">
+        <MappingFragment StoreEntitySet="thana_tb">
+          <ScalarProperty Name="thanaID" ColumnName="thanaID" />
+          <ScalarProperty Name="thanaName" ColumnName="thanaName" />
+          <ScalarProperty Name="districtID" ColumnName="districtID" />
+          <ScalarProperty Name="districtName" ColumnName="districtName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="total_stock_tb">
+      <EntityTypeMapping TypeName="community_medicine_dbModel.total_stock_tb">
+        <MappingFragment StoreEntitySet="total_stock_tb">
+          <ScalarProperty Name="totalstockID" ColumnName="totalstockID" />
+          <ScalarProperty Name="centerID" ColumnName="centerID" />
+          <ScalarProperty Name="centerName" ColumnName="centerName" />
+          <ScalarProperty Name="medicineID" ColumnName="medicineID" />
+          <ScalarProperty Name="medicineName" ColumnName="medicineName" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="treatment_tb">
+      <EntityTypeMapping TypeName="community_medicine_dbModel.treatment_tb">
+        <MappingFragment StoreEntitySet="treatment_tb">
+          <ScalarProperty Name="observation" ColumnName="observation" />
+          <ScalarProperty Name="treatmentID" ColumnName="treatmentID" />
+          <ScalarProperty Name="doctorID" ColumnName="doctorID" />
+          <ScalarProperty Name="doctorName" ColumnName="doctorName" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+          <ScalarProperty Name="patientName" ColumnName="patientName" />
+          <ScalarProperty Name="centerID" ColumnName="centerID" />
+          <ScalarProperty Name="centerName" ColumnName="centerName" />
+          <ScalarProperty Name="diseaseID" ColumnName="diseaseID" />
+          <ScalarProperty Name="diseaseName" ColumnName="diseaseName" />
+          <ScalarProperty Name="medicineID" ColumnName="medicineID" />
+          <ScalarProperty Name="medicineName" ColumnName="medicineName" />
+          <ScalarProperty Name="dose" ColumnName="dose" />
+          <ScalarProperty Name="timeForTake" ColumnName="timeForTake" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

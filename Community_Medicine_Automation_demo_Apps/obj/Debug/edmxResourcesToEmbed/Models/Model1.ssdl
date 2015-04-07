@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="community_medicine_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="center_tb">
+    <Key>
+      <PropertyRef Name="centerId" />
+    </Key>
+    <Property Name="centerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="centerName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="districtID" Type="int" Nullable="false" />
+    <Property Name="districtName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="thanaID" Type="int" Nullable="false" />
+    <Property Name="thanaName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="disease_tb">
+    <Key>
+      <PropertyRef Name="diseaseID" />
+    </Key>
+    <Property Name="diseaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="diseaseName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="varchar(max)" Nullable="false" />
+    <Property Name="treatment" Type="varchar(max)" />
+    <Property Name="prfered_drugs" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="district_tb">
+    <Key>
+      <PropertyRef Name="districtID" />
+    </Key>
+    <Property Name="districtID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="districtName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="doctor_tb">
+    <Key>
+      <PropertyRef Name="doctorID" />
+    </Key>
+    <Property Name="doctorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="centerID" Type="int" Nullable="false" />
+    <Property Name="centerName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="doctorName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="degree" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="specialization" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="medicine_tb">
+    <Key>
+      <PropertyRef Name="medicineID" />
+    </Key>
+    <Property Name="medicineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="medicineName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="mg_ml" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="patient_tb">
+    <Key>
+      <PropertyRef Name="patientID" />
+    </Key>
+    <Property Name="patientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="voterID" Type="int" Nullable="false" />
+    <Property Name="patientName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="age" Type="int" Nullable="false" />
+    <Property Name="patientService" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="stock_tb">
+    <Key>
+      <PropertyRef Name="stockID" />
+    </Key>
+    <Property Name="stockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="centerID" Type="int" Nullable="false" />
+    <Property Name="centerName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="medicineID" Type="int" Nullable="false" />
+    <Property Name="medicineName2" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="stock" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="thana_tb">
+    <Key>
+      <PropertyRef Name="thanaID" />
+    </Key>
+    <Property Name="thanaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="thanaName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="districtID" Type="int" Nullable="false" />
+    <Property Name="districtName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="total_stock_tb">
+    <Key>
+      <PropertyRef Name="totalstockID" />
+    </Key>
+    <Property Name="totalstockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="centerID" Type="int" Nullable="false" />
+    <Property Name="centerName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="medicineID" Type="int" Nullable="false" />
+    <Property Name="medicineName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="stock" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="treatment_tb">
+    <Key>
+      <PropertyRef Name="treatmentID" />
+    </Key>
+    <Property Name="treatmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="doctorID" Type="int" Nullable="false" />
+    <Property Name="doctorName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="observation" Type="varchar(max)" />
+    <Property Name="date" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="patientID" Type="int" Nullable="false" />
+    <Property Name="patientName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="centerID" Type="int" Nullable="false" />
+    <Property Name="centerName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="diseaseID" Type="int" Nullable="false" />
+    <Property Name="diseaseName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="medicineID" Type="int" Nullable="false" />
+    <Property Name="medicineName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dose" Type="int" />
+    <Property Name="timeForTake" Type="varchar" MaxLength="50" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="note" Type="varchar(max)" />
+  </EntityType>
+  <EntityContainer Name="community_medicine_dbModelStoreContainer">
+    <EntitySet Name="center_tb" EntityType="Self.center_tb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="disease_tb" EntityType="Self.disease_tb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="district_tb" EntityType="Self.district_tb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="doctor_tb" EntityType="Self.doctor_tb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="medicine_tb" EntityType="Self.medicine_tb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="patient_tb" EntityType="Self.patient_tb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stock_tb" EntityType="Self.stock_tb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="thana_tb" EntityType="Self.thana_tb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="total_stock_tb" EntityType="Self.total_stock_tb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="treatment_tb" EntityType="Self.treatment_tb" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

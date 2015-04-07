@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="community_medicine_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="center_tb">
+    <Key>
+      <PropertyRef Name="centerId" />
+    </Key>
+    <Property Name="centerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="centerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="districtID" Type="Int32" Nullable="false" />
+    <Property Name="districtName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="thanaID" Type="Int32" Nullable="false" />
+    <Property Name="thanaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="disease_tb">
+    <Key>
+      <PropertyRef Name="diseaseID" />
+    </Key>
+    <Property Name="diseaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="diseaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="treatment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="prfered_drugs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="district_tb">
+    <Key>
+      <PropertyRef Name="districtID" />
+    </Key>
+    <Property Name="districtID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="districtName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="doctor_tb">
+    <Key>
+      <PropertyRef Name="doctorID" />
+    </Key>
+    <Property Name="doctorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="centerID" Type="Int32" Nullable="false" />
+    <Property Name="centerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="doctorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="degree" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="specialization" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="medicine_tb">
+    <Key>
+      <PropertyRef Name="medicineID" />
+    </Key>
+    <Property Name="medicineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="medicineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mg_ml" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="patient_tb">
+    <Key>
+      <PropertyRef Name="patientID" />
+    </Key>
+    <Property Name="patientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="voterID" Type="Int32" Nullable="false" />
+    <Property Name="patientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="age" Type="Int32" Nullable="false" />
+    <Property Name="patientService" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="stock_tb">
+    <Key>
+      <PropertyRef Name="stockID" />
+    </Key>
+    <Property Name="stockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="centerID" Type="Int32" Nullable="false" />
+    <Property Name="centerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="medicineID" Type="Int32" Nullable="false" />
+    <Property Name="medicineName2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="stock" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="thana_tb">
+    <Key>
+      <PropertyRef Name="thanaID" />
+    </Key>
+    <Property Name="thanaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="thanaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="districtID" Type="Int32" Nullable="false" />
+    <Property Name="districtName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="total_stock_tb">
+    <Key>
+      <PropertyRef Name="totalstockID" />
+    </Key>
+    <Property Name="totalstockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="centerID" Type="Int32" Nullable="false" />
+    <Property Name="centerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="medicineID" Type="Int32" Nullable="false" />
+    <Property Name="medicineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="stock" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="treatment_tb">
+    <Key>
+      <PropertyRef Name="treatmentID" />
+    </Key>
+    <Property Name="treatmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="doctorID" Type="Int32" Nullable="false" />
+    <Property Name="doctorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="patientID" Type="Int32" Nullable="false" />
+    <Property Name="patientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="centerID" Type="Int32" Nullable="false" />
+    <Property Name="centerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="diseaseID" Type="Int32" Nullable="false" />
+    <Property Name="diseaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="medicineID" Type="Int32" Nullable="false" />
+    <Property Name="medicineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dose" Type="Int32" />
+    <Property Name="timeForTake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="observation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="community_medicine_dbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="center_tb" EntityType="Self.center_tb" />
+    <EntitySet Name="disease_tb" EntityType="Self.disease_tb" />
+    <EntitySet Name="district_tb" EntityType="Self.district_tb" />
+    <EntitySet Name="doctor_tb" EntityType="Self.doctor_tb" />
+    <EntitySet Name="medicine_tb" EntityType="Self.medicine_tb" />
+    <EntitySet Name="patient_tb" EntityType="Self.patient_tb" />
+    <EntitySet Name="stock_tb" EntityType="Self.stock_tb" />
+    <EntitySet Name="thana_tb" EntityType="Self.thana_tb" />
+    <EntitySet Name="total_stock_tb" EntityType="Self.total_stock_tb" />
+    <EntitySet Name="treatment_tb" EntityType="Self.treatment_tb" />
+  </EntityContainer>
+</Schema>

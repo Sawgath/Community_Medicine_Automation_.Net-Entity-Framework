@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="center-block">
+    <div class="row">
+        <div class="col-lg-3 col-md-3"></div>
+        <div class="col-lg-6 col-md-6 text-center postTopic1">
+            <br/>
+            <h2>
+               <u> Welcome TO HeadOffice</u>
+            </h2>
+            <h3>
+            Medicine Setup
+            </h3>
+            <button type="submit" onclick=" location.href='@Url.Action("Medicine_Setup", "HeadOffice")' " class=" btn btn-primary">Go For setup</button>
+            <br>
+
+            <h3>
+                <p>Disease Setup</p>
+            </h3>
+            <button type="submit" onclick=" location.href='@Url.Action("Disease_Setup", "HeadOffice")' " class=" btn btn-primary">Go For setup</button>
+            <br>
+
+            <h3>
+                <p>Create New Center</p>
+            </h3>
+            <button type="submit" onclick=" location.href='@Url.Action("Create_Center", "HeadOffice")' " class=" btn btn-primary">Go For Create</button>
+            <br>
+
+            <h3>
+                <p>Login Center</p>
+            </h3>
+            <button type="submit" onclick=" location.href='@Url.Action("Index", "Center")' " class=" btn btn-primary">Login</button>
+            <br>
+
+            <h3>
+                <p>Center Info</p>
+            </h3>
+            <button type="submit" onclick=" location.href='@Url.Action("Center_Info", "HeadOffice")' " class=" btn btn-primary">Go For Info</button>
+            <br>
+
+
+            <h3>
+                <p>Medicine Supply</p>
+            </h3>
+            <button type="submit" onclick=" location.href='@Url.Action("Medicine_Supply", "HeadOffice")' " class=" btn btn-primary">send Medicine</button>
+            <br>
+
+        </div>
+        <div class="col-lg-3 col-md-3"></div>
+    </div>
+
+ </div>

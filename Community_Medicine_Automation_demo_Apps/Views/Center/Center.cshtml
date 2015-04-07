@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Center";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+
+
+<div class="center-block">
+    <div class="row">
+        <div class="col-lg-3 col-md-3"></div>
+        <div class="col-lg-6 col-md-6 text-center postTopic1">
+            <br/>
+            <h2>Welcome TO Center</h2>
+            <br/>
+            <h3>
+                <p>Doctor Entry</p>
+            </h3>
+            <button type="submit" onclick=" location.href = '@Url.Action("DoctorEntry", "Center")' " class="btn btn-primary">Entry Data</button>
+            <br>
+
+            <h3>
+                <p>Medicine Stock Report</p>
+            </h3>
+            <button type="submit" onclick=" location.href = '@Url.Action("stockReport", "Center")' " class="btn btn-primary">See the Stock</button>
+            <br>
+
+            <h3>
+                <p>Treatment </p>
+            </h3>
+            <button type="submit" onclick=" location.href = '@Url.Action("treatment", "Center")' " class="btn btn-primary">Show all history</button>
+            <br>
+
+            <h3>
+                <p>Disease-wise report </p>
+            </h3>
+            <button type="submit" onclick=" location.href = '@Url.Action("Index", "Center")' " class="btn btn-primary">See the disease report</button>
+            <br>
+
+            <a href=@Url.Action("Index", "HeadOffice")>Go to Main manu</a>
+
+
+        </div>
+        <div class="col-lg-3 col-md-3"></div>
+    </div>
+
+</div>

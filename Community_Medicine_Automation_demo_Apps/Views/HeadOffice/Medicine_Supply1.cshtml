@@ -1,0 +1,14 @@
+﻿@model Community_Medicine_Automation_demo_Apps.Models.ListingPair2
+@using (Ajax.BeginForm("Medicine_Supply1", "HeadOffice", new AjaxOptions { UpdateTargetId = "Medicine_Supply2" }))
+{
+    @Html.DropDownListFor(
+            m => m.ACenterTbs,
+                    new SelectList(Model.ACenterTbs, "centerID", "district"),
+           string.Empty
+        )
+}
+<script type="text/javascript">
+    $('#ACenterTbs').change(function () {
+        $(this).parents('form').submit();
+    });
+</script>

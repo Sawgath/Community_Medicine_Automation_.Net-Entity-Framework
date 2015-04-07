@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="community_medicine_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="center_tb">
+          <Key>
+            <PropertyRef Name="centerId" />
+          </Key>
+          <Property Name="centerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="centerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="districtID" Type="int" Nullable="false" />
+          <Property Name="districtName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="thanaID" Type="int" Nullable="false" />
+          <Property Name="thanaName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="disease_tb">
+          <Key>
+            <PropertyRef Name="diseaseID" />
+          </Key>
+          <Property Name="diseaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="diseaseName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar(max)" Nullable="false" />
+          <Property Name="treatment" Type="varchar(max)" />
+          <Property Name="prfered_drugs" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="district_tb">
+          <Key>
+            <PropertyRef Name="districtID" />
+          </Key>
+          <Property Name="districtID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="districtName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="doctor_tb">
+          <Key>
+            <PropertyRef Name="doctorID" />
+          </Key>
+          <Property Name="doctorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="centerID" Type="int" Nullable="false" />
+          <Property Name="centerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="doctorName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="degree" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="specialization" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="medicine_tb">
+          <Key>
+            <PropertyRef Name="medicineID" />
+          </Key>
+          <Property Name="medicineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="medicineName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mg_ml" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="patient_tb">
+          <Key>
+            <PropertyRef Name="patientID" />
+          </Key>
+          <Property Name="patientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voterID" Type="int" Nullable="false" />
+          <Property Name="patientName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="age" Type="int" Nullable="false" />
+          <Property Name="patientService" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stock_tb">
+          <Key>
+            <PropertyRef Name="stockID" />
+          </Key>
+          <Property Name="stockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="centerID" Type="int" Nullable="false" />
+          <Property Name="centerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="medicineID" Type="int" Nullable="false" />
+          <Property Name="medicineName2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="stock" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="thana_tb">
+          <Key>
+            <PropertyRef Name="thanaID" />
+          </Key>
+          <Property Name="thanaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="thanaName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="districtID" Type="int" Nullable="false" />
+          <Property Name="districtName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="total_stock_tb">
+          <Key>
+            <PropertyRef Name="totalstockID" />
+          </Key>
+          <Property Name="totalstockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="centerID" Type="int" Nullable="false" />
+          <Property Name="centerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="medicineID" Type="int" Nullable="false" />
+          <Property Name="medicineName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="stock" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="treatment_tb">
+          <Key>
+            <PropertyRef Name="treatmentID" />
+          </Key>
+          <Property Name="treatmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="doctorID" Type="int" Nullable="false" />
+          <Property Name="doctorName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="observation" Type="varchar(max)" />
+          <Property Name="date" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="patientID" Type="int" Nullable="false" />
+          <Property Name="patientName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="centerID" Type="int" Nullable="false" />
+          <Property Name="centerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="diseaseID" Type="int" Nullable="false" />
+          <Property Name="diseaseName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="medicineID" Type="int" Nullable="false" />
+          <Property Name="medicineName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dose" Type="int" />
+          <Property Name="timeForTake" Type="varchar" MaxLength="50" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="note" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="community_medicine_dbModelStoreContainer">
+          <EntitySet Name="center_tb" EntityType="Self.center_tb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="disease_tb" EntityType="Self.disease_tb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="district_tb" EntityType="Self.district_tb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doctor_tb" EntityType="Self.doctor_tb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="medicine_tb" EntityType="Self.medicine_tb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="patient_tb" EntityType="Self.patient_tb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stock_tb" EntityType="Self.stock_tb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="thana_tb" EntityType="Self.thana_tb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="total_stock_tb" EntityType="Self.total_stock_tb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="treatment_tb" EntityType="Self.treatment_tb" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="community_medicine_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="center_tb">
+          <Key>
+            <PropertyRef Name="centerId" />
+          </Key>
+          <Property Name="centerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="centerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="districtID" Type="Int32" Nullable="false" />
+          <Property Name="districtName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="thanaID" Type="Int32" Nullable="false" />
+          <Property Name="thanaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="disease_tb">
+          <Key>
+            <PropertyRef Name="diseaseID" />
+          </Key>
+          <Property Name="diseaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="diseaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="treatment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="prfered_drugs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="district_tb">
+          <Key>
+            <PropertyRef Name="districtID" />
+          </Key>
+          <Property Name="districtID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="districtName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="doctor_tb">
+          <Key>
+            <PropertyRef Name="doctorID" />
+          </Key>
+          <Property Name="doctorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="centerID" Type="Int32" Nullable="false" />
+          <Property Name="centerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="doctorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="degree" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="specialization" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="medicine_tb">
+          <Key>
+            <PropertyRef Name="medicineID" />
+          </Key>
+          <Property Name="medicineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="medicineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mg_ml" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="patient_tb">
+          <Key>
+            <PropertyRef Name="patientID" />
+          </Key>
+          <Property Name="patientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voterID" Type="Int32" Nullable="false" />
+          <Property Name="patientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="age" Type="Int32" Nullable="false" />
+          <Property Name="patientService" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stock_tb">
+          <Key>
+            <PropertyRef Name="stockID" />
+          </Key>
+          <Property Name="stockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="centerID" Type="Int32" Nullable="false" />
+          <Property Name="centerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="medicineID" Type="Int32" Nullable="false" />
+          <Property Name="medicineName2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="stock" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="thana_tb">
+          <Key>
+            <PropertyRef Name="thanaID" />
+          </Key>
+          <Property Name="thanaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="thanaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="districtID" Type="Int32" Nullable="false" />
+          <Property Name="districtName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="total_stock_tb">
+          <Key>
+            <PropertyRef Name="totalstockID" />
+          </Key>
+          <Property Name="totalstockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="centerID" Type="Int32" Nullable="false" />
+          <Property Name="centerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="medicineID" Type="Int32" Nullable="false" />
+          <Property Name="medicineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="stock" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="treatment_tb">
+          <Key>
+            <PropertyRef Name="treatmentID" />
+          </Key>
+          <Property Name="treatmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="doctorID" Type="Int32" Nullable="false" />
+          <Property Name="doctorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="patientID" Type="Int32" Nullable="false" />
+          <Property Name="patientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="centerID" Type="Int32" Nullable="false" />
+          <Property Name="centerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="diseaseID" Type="Int32" Nullable="false" />
+          <Property Name="diseaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="medicineID" Type="Int32" Nullable="false" />
+          <Property Name="medicineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dose" Type="Int32" />
+          <Property Name="timeForTake" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="observation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="community_medicine_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="center_tb" EntityType="Self.center_tb" />
+          <EntitySet Name="disease_tb" EntityType="Self.disease_tb" />
+          <EntitySet Name="district_tb" EntityType="Self.district_tb" />
+          <EntitySet Name="doctor_tb" EntityType="Self.doctor_tb" />
+          <EntitySet Name="medicine_tb" EntityType="Self.medicine_tb" />
+          <EntitySet Name="patient_tb" EntityType="Self.patient_tb" />
+          <EntitySet Name="stock_tb" EntityType="Self.stock_tb" />
+          <EntitySet Name="thana_tb" EntityType="Self.thana_tb" />
+          <EntitySet Name="total_stock_tb" EntityType="Self.total_stock_tb" />
+          <EntitySet Name="treatment_tb" EntityType="Self.treatment_tb" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="community_medicine_dbModelStoreContainer" CdmEntityContainer="community_medicine_dbEntities">
+          <EntitySetMapping Name="center_tb">
+            <EntityTypeMapping TypeName="community_medicine_dbModel.center_tb">
+              <MappingFragment StoreEntitySet="center_tb">
+                <ScalarProperty Name="centerId" ColumnName="centerId" />
+                <ScalarProperty Name="centerName" ColumnName="centerName" />
+                <ScalarProperty Name="districtID" ColumnName="districtID" />
+                <ScalarProperty Name="districtName" ColumnName="districtName" />
+                <ScalarProperty Name="thanaID" ColumnName="thanaID" />
+                <ScalarProperty Name="thanaName" ColumnName="thanaName" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="disease_tb">
+            <EntityTypeMapping TypeName="community_medicine_dbModel.disease_tb">
+              <MappingFragment StoreEntitySet="disease_tb">
+                <ScalarProperty Name="diseaseID" ColumnName="diseaseID" />
+                <ScalarProperty Name="diseaseName" ColumnName="diseaseName" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="treatment" ColumnName="treatment" />
+                <ScalarProperty Name="prfered_drugs" ColumnName="prfered_drugs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="district_tb">
+            <EntityTypeMapping TypeName="community_medicine_dbModel.district_tb">
+              <MappingFragment StoreEntitySet="district_tb">
+                <ScalarProperty Name="districtID" ColumnName="districtID" />
+                <ScalarProperty Name="districtName" ColumnName="districtName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doctor_tb">
+            <EntityTypeMapping TypeName="community_medicine_dbModel.doctor_tb">
+              <MappingFragment StoreEntitySet="doctor_tb">
+                <ScalarProperty Name="doctorID" ColumnName="doctorID" />
+                <ScalarProperty Name="centerID" ColumnName="centerID" />
+                <ScalarProperty Name="centerName" ColumnName="centerName" />
+                <ScalarProperty Name="doctorName" ColumnName="doctorName" />
+                <ScalarProperty Name="degree" ColumnName="degree" />
+                <ScalarProperty Name="specialization" ColumnName="specialization" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="medicine_tb">
+            <EntityTypeMapping TypeName="community_medicine_dbModel.medicine_tb">
+              <MappingFragment StoreEntitySet="medicine_tb">
+                <ScalarProperty Name="medicineID" ColumnName="medicineID" />
+                <ScalarProperty Name="medicineName" ColumnName="medicineName" />
+                <ScalarProperty Name="mg_ml" ColumnName="mg_ml" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="patient_tb">
+            <EntityTypeMapping TypeName="community_medicine_dbModel.patient_tb">
+              <MappingFragment StoreEntitySet="patient_tb">
+                <ScalarProperty Name="patientID" ColumnName="patientID" />
+                <ScalarProperty Name="voterID" ColumnName="voterID" />
+                <ScalarProperty Name="patientName" ColumnName="patientName" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="patientService" ColumnName="patientService" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stock_tb">
+            <EntityTypeMapping TypeName="community_medicine_dbModel.stock_tb">
+              <MappingFragment StoreEntitySet="stock_tb">
+                <ScalarProperty Name="stockID" ColumnName="stockID" />
+                <ScalarProperty Name="centerID" ColumnName="centerID" />
+                <ScalarProperty Name="centerName" ColumnName="centerName" />
+                <ScalarProperty Name="medicineID" ColumnName="medicineID" />
+                <ScalarProperty Name="medicineName2" ColumnName="medicineName2" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="thana_tb">
+            <EntityTypeMapping TypeName="community_medicine_dbModel.thana_tb">
+              <MappingFragment StoreEntitySet="thana_tb">
+                <ScalarProperty Name="thanaID" ColumnName="thanaID" />
+                <ScalarProperty Name="thanaName" ColumnName="thanaName" />
+                <ScalarProperty Name="districtID" ColumnName="districtID" />
+                <ScalarProperty Name="districtName" ColumnName="districtName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="total_stock_tb">
+            <EntityTypeMapping TypeName="community_medicine_dbModel.total_stock_tb">
+              <MappingFragment StoreEntitySet="total_stock_tb">
+                <ScalarProperty Name="totalstockID" ColumnName="totalstockID" />
+                <ScalarProperty Name="centerID" ColumnName="centerID" />
+                <ScalarProperty Name="centerName" ColumnName="centerName" />
+                <ScalarProperty Name="medicineID" ColumnName="medicineID" />
+                <ScalarProperty Name="medicineName" ColumnName="medicineName" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="treatment_tb">
+            <EntityTypeMapping TypeName="community_medicine_dbModel.treatment_tb">
+              <MappingFragment StoreEntitySet="treatment_tb">
+                <ScalarProperty Name="observation" ColumnName="observation" />
+                <ScalarProperty Name="treatmentID" ColumnName="treatmentID" />
+                <ScalarProperty Name="doctorID" ColumnName="doctorID" />
+                <ScalarProperty Name="doctorName" ColumnName="doctorName" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="patientID" ColumnName="patientID" />
+                <ScalarProperty Name="patientName" ColumnName="patientName" />
+                <ScalarProperty Name="centerID" ColumnName="centerID" />
+                <ScalarProperty Name="centerName" ColumnName="centerName" />
+                <ScalarProperty Name="diseaseID" ColumnName="diseaseID" />
+                <ScalarProperty Name="diseaseName" ColumnName="diseaseName" />
+                <ScalarProperty Name="medicineID" ColumnName="medicineID" />
+                <ScalarProperty Name="medicineName" ColumnName="medicineName" />
+                <ScalarProperty Name="dose" ColumnName="dose" />
+                <ScalarProperty Name="timeForTake" ColumnName="timeForTake" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

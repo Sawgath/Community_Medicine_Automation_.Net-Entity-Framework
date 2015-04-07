@@ -1,0 +1,9 @@
+﻿@model Community_Medicine_Automation_demo_Apps.Models.ListingPair2
+@if (Model.ACenterTbs != null && Model.ACenterTbs.Count() > 0)
+{
+    @Html.DropDownList(
+        "Products",
+                    new SelectList(Model.ACenterTbs, "centerID", "centerName"),
+            string.Empty
+            )
+}
